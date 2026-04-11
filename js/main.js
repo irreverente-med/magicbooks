@@ -72,10 +72,43 @@ const initFAQ = () => {
     });
 };
 
+/**
+ * Initializes Mobile Navigation Toggle
+ */
+const initMobileMenu = () => {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navList = document.querySelector('.nav-list');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (!hamburger || !navList) return;
+
+    // Toggle menu
+    hamburger.addEventListener('click', () => {
+        const isActive = hamburger.classList.contains('active');
+        hamburger.classList.toggle('active');
+        navList.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', !isActive);
+        
+        // Prevent body scrolling when menu is open
+        document.body.style.overflowY = isActive ? '' : 'hidden';
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navList.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflowY = '';
+        });
+    });
+};
+
 // Initialize on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppButtons();
     initAnnouncementBar();
     initFAQ();
+    initMobileMenu();
     console.log('Libros Únicos - Initialized logic.');
 });
