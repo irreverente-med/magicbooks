@@ -3,8 +3,10 @@
    ========================================================================== */
 :root {
     /* Color Palette */
-    --clr-bg: #fafafa; /* Alabaster Off-white for premium feel */
-    --clr-text-main: #1a1a1a; /* Rich Black/Charcoal for extreme contrast */
+    --clr-bg: #fafafa;
+    /* Alabaster Off-white for premium feel */
+    --clr-text-main: #1a1a1a;
+    /* Rich Black/Charcoal for extreme contrast */
     --clr-text-muted: #555555;
     --clr-bg-alt: #fcfcfc;
     --clr-border: #eaeaea;
@@ -18,17 +20,27 @@
     --trans-slow: transform 0.6s ease;
 
     /* Brand Identity */
-    --accent-color: #f5b2bf; /* Rose Pastel */
-    --accent-dark: #e09aa7; /* Slightly darker for hover states */
+    --accent-color: #f5b2bf;
+    /* Rose Pastel */
+    --accent-dark: #e09aa7;
+    /* Slightly darker for hover states */
 }
 
 /* ==========================================================================
    RESET & BASE
    ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -38,13 +50,18 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden; /* Prevents mobile horizontal scrolling */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     color: var(--clr-text-main);
-    font-weight: 400; /* Elegant, unforced weight */
+    font-weight: 400;
+    /* Elegant, unforced weight */
 }
 
 img {
@@ -85,7 +102,8 @@ a {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 5%; /* Safe horizontal padding to protect logo/icons from edges */
+    padding: 0 5%;
+    /* Safe horizontal padding to protect logo/icons from edges */
 }
 
 .logo {
@@ -106,7 +124,8 @@ a {
 
 /* Minimalist Mobile Navigation & Hamburger */
 .hamburger-menu {
-    display: none; /* Hidden on desktop */
+    display: none;
+    /* Hidden on desktop */
 }
 
 @media (max-width: 768px) {
@@ -119,7 +138,8 @@ a {
         background: transparent;
         border: none;
         cursor: pointer;
-        z-index: 1002; /* Above the overlay nav */
+        z-index: 1002;
+        /* Above the overlay nav */
         padding: 0;
     }
 
@@ -133,7 +153,8 @@ a {
 
     .hamburger-menu.active .hamburger-line:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
-        background-color: var(--accent-color); /* Brand color on active */
+        background-color: var(--accent-color);
+        /* Brand color on active */
     }
 
     .hamburger-menu.active .hamburger-line:nth-child(2) {
@@ -148,28 +169,34 @@ a {
     .nav-list {
         position: fixed;
         top: 0;
-        right: -100%; /* Hidden off-screen right */
+        right: -100%;
+        /* Hidden off-screen right */
         width: 100%;
         height: 100vh;
         background-color: rgba(250, 250, 250, 0.98);
-        backdrop-filter: blur(12px); /* Glassmorphism overlay */
+        backdrop-filter: blur(12px);
+        /* Glassmorphism overlay */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 3rem;
         transition: right 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        z-index: 1001; /* Behind the hamburger */
+        z-index: 1001;
+        /* Behind the hamburger */
         list-style: none;
     }
 
     .nav-list.active {
-        right: 0; /* Slide in */
+        right: 0;
+        /* Slide in */
     }
 
     .nav-link {
-        font-size: 1.5rem; /* Larger for mobile readability */
-        min-height: 44px; /* Accessible touch target */
+        font-size: 1.5rem;
+        /* Larger for mobile readability */
+        min-height: 44px;
+        /* Accessible touch target */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -186,6 +213,7 @@ a {
     font-weight: 500;
     transition: var(--trans-smooth);
 }
+
 .contact-pill:hover {
     color: var(--clr-text-muted);
 }
@@ -219,7 +247,7 @@ a {
 /* Button Styling (High-end Editorial) */
 .btn-primary {
     display: inline-block;
-    background-color: var(--clr-text-main);
+    background-color: var(--accent-color);
     color: #ffffff;
     padding: 1.25rem 2.5rem;
     font-family: var(--font-body);
@@ -227,7 +255,8 @@ a {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-radius: 0; /* Crisp edges */
+    border-radius: 0;
+    /* Crisp edges */
     transition: var(--trans-smooth);
     border: 1px solid var(--clr-text-main);
 }
@@ -252,7 +281,8 @@ a {
 
 .trust-container {
     display: flex;
-    flex-direction: column; /* Mobile-First */
+    flex-direction: column;
+    /* Mobile-First */
     align-items: center;
     gap: 2rem;
     text-align: center;
@@ -269,17 +299,19 @@ a {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #888888; /* Muted gray base */
+    color: #888888;
+    /* Muted gray base */
     font-weight: 500;
     /* Elegant timing curve: fast entry, luxurious deceleration */
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Artistic Bloom Hover Effect */
-.trust-item:hover .trust-text {
+/* Artistic Bloom Scroll Effect */
+.trust-item.is-active .trust-text {
     color: var(--accent-color);
     letter-spacing: 3px;
-    text-shadow: 0 0 12px rgba(245, 178, 191, 0.5); /* Brand color with opacity */
+    text-shadow: 0 0 12px rgba(245, 178, 191, 0.5);
+    /* Brand color with opacity */
 }
 
 /* ==========================================================================
@@ -310,8 +342,10 @@ a {
 
 .catalog-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Mobile-first: 1 column */
+    grid-template-columns: 1fr;
+    /* Mobile-first: 1 column */
     gap: 3.5rem;
+    max-width: 100%;
 }
 
 .product-card {
@@ -319,9 +353,10 @@ a {
 }
 
 .product-image-container {
+    position: relative;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    background-color: var(--clr-border);
+    background-color: #f9f9f9;
     aspect-ratio: 3 / 4;
 }
 
@@ -329,11 +364,30 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--trans-slow);
+    display: block;
+    transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.product-card:hover .product-image {
-    transform: scale(1.05); /* Slow, elegant zoom */
+.product-image.primary {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.product-image.secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.product-card:hover .product-image.primary {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.product-card:hover .product-image.secondary {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .product-info {
@@ -374,9 +428,12 @@ a {
     background-color: var(--accent-color);
     color: var(--clr-text-main);
     height: 50px;
-    width: 50px; /* Initially just a circle */
-    border-radius: 25px; /* Pill shape fully rounded */
-    padding: 0 15px; /* Enough padding to center the icon */
+    width: 50px;
+    /* Initially just a circle */
+    border-radius: 25px;
+    /* Pill shape fully rounded */
+    padding: 0 15px;
+    /* Enough padding to center the icon */
     text-decoration: none;
     overflow: hidden;
     /* Use the glamour curve for the width morph */
@@ -384,14 +441,17 @@ a {
 }
 
 .btn-expand:hover {
-    width: 250px; /* Expands smoothly */
-    box-shadow: 0 0 15px rgba(245, 178, 191, 0.5); /* Brand bloom */
+    width: 250px;
+    /* Expands smoothly */
+    box-shadow: 0 0 15px rgba(245, 178, 191, 0.5);
+    /* Brand bloom */
 }
 
 .btn-expand-icon {
     font-size: 1.2rem;
     flex-shrink: 0;
-    margin-left: 3px; /* visual center tweak */
+    margin-left: 3px;
+    /* visual center tweak */
 }
 
 .btn-expand-text {
@@ -423,6 +483,7 @@ a {
     grid-template-columns: 1fr;
     gap: 3rem;
     text-align: center;
+    max-width: 100%;
 }
 
 .step-number {
@@ -463,7 +524,8 @@ a {
    ========================================================================== */
 @media (min-width: 768px) {
     .trust-container {
-        flex-direction: row; /* Horizontal layout on larger screens */
+        flex-direction: row;
+        /* Horizontal layout on larger screens */
         justify-content: center;
         gap: 3.5rem;
     }
@@ -480,16 +542,17 @@ a {
         transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .trust-item:hover::after {
+    .trust-item.is-active::after {
         background-color: var(--accent-color);
         box-shadow: 0 0 6px rgba(245, 178, 191, 0.5);
     }
 
     .catalog-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on Tablet */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on Tablet */
         gap: 4rem;
     }
-    
+
     .process-steps {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -497,7 +560,8 @@ a {
 
 @media (min-width: 1024px) {
     .catalog-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on Desktop */
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columns on Desktop */
         gap: 2.5rem;
     }
 
@@ -509,7 +573,7 @@ a {
     .header-container {
         padding: 0 2rem;
     }
-    
+
     .hero {
         padding: 9rem 0 8rem;
     }
@@ -536,6 +600,8 @@ a {
 
 .announcement-msg {
     position: absolute;
+    width: 100%;
+    text-align: center;
     font-family: var(--font-body);
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -543,13 +609,42 @@ a {
     margin: 0;
     padding: 8px 0;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    transform: translateY(100%);
 }
 
 .announcement-msg.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+@keyframes slideUpExit {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideUpEnter {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.announcement-msg.exit-up {
+    animation: slideUpExit 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.announcement-msg.enter-up {
+    animation: slideUpEnter 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* ==========================================================================
@@ -667,7 +762,8 @@ a {
    ========================================================================== */
 .reviews-section {
     padding: 100px 0;
-    background-color: var(--clr-bg-alt); /* Soft off-white */
+    background-color: var(--clr-bg-alt);
+    /* Soft off-white */
 }
 
 .trust-header {
@@ -704,10 +800,12 @@ a {
 
 /* Container & Edge Fades */
 .reviews-ticker-container {
-    overflow: hidden;
     width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
     position: relative;
-    padding: 20px 0; /* Room for card hover translations and shadows */
+    padding: 20px 0;
+    /* Room for card hover translations and shadows */
 }
 
 .reviews-ticker-container::before,
@@ -716,7 +814,8 @@ a {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 15vw; /* Smooth fade percentage based on viewport */
+    width: 15vw;
+    /* Smooth fade percentage based on viewport */
     max-width: 150px;
     z-index: 2;
     pointer-events: none;
@@ -747,6 +846,7 @@ a {
     0% {
         transform: translateX(0);
     }
+
     100% {
         /* Translates exactly half of the total width for a seamless loop */
         transform: translateX(-50%);
@@ -758,8 +858,10 @@ a {
     background: #ffffff;
     border-radius: 4px;
     padding: 10px;
-    margin-right: 2rem; /* Serves as gap between cards */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+    margin-right: 2rem;
+    /* Serves as gap between cards */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Very subtle shadow */
 }
 
 .review-card .image-container {
