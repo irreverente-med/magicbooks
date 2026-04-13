@@ -128,7 +128,7 @@ const initTrustBarScroll = () => {
 
     const observerOptions = {
         root: null,
-        rootMargin: '-45% 0px -45% 0px',
+        rootMargin: '-24% 0px -30% 0px',
         threshold: 1.0
     };
 
@@ -147,6 +147,32 @@ const initTrustBarScroll = () => {
     });
 };
 
+/**
+ * Initializes Scroll-Triggered Expansion for the Catalog Button
+ */
+const initExpandButtonScroll = () => {
+    const expandBtn = document.querySelector('.btn-expand');
+    if (!expandBtn) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-25% 0% -15% 0%', // Target the center horizontal strip
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                expandBtn.classList.add('is-active');
+            } else {
+                expandBtn.classList.remove('is-active');
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(expandBtn);
+};
+
 // Initialize on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppButtons();
@@ -154,5 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initMobileMenu();
     initTrustBarScroll();
+    initExpandButtonScroll();
     console.log('Libros Únicos - Initialized logic.');
 });
