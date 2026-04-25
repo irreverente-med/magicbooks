@@ -375,6 +375,10 @@ a {
     transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.product-card:hover .product-image:not(.primary):not(.secondary) {
+    transform: scale(1.05);
+}
+
 .product-image.primary {
     opacity: 1;
     transform: scale(1);
@@ -572,6 +576,10 @@ a {
         grid-template-columns: repeat(4, 1fr);
         /* 4 columns on Desktop */
         gap: 2.5rem;
+    }
+
+    .catalog-grid.catalog-grid-alt {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .nav-list {
