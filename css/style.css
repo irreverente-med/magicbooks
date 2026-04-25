@@ -102,8 +102,9 @@ a {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 5%;
-    /* Safe horizontal padding to protect logo/icons from edges */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .logo {
@@ -363,7 +364,7 @@ a {
     position: relative;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     aspect-ratio: 3 / 4;
 }
 
@@ -483,6 +484,55 @@ a {
 }
 
 /* ==========================================================================
+   BACK BUTTON (Pill Expander)
+   ========================================================================== */
+.btn-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 3rem auto;
+    background-color: transparent;
+    border: 1px solid var(--clr-border);
+    color: var(--clr-text-main);
+    height: 48px;
+    width: fit-content;
+    border-radius: 24px;
+    padding: 0 24px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-back:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(245, 178, 191, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-back-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-right: 10px;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-back:hover .btn-back-icon {
+    transform: translateX(-5px);
+}
+
+.btn-back-text {
+    white-space: nowrap;
+    opacity: 1;
+    font-weight: 500;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
    HOW IT WORKS (Process)
    ========================================================================== */
 .how-it-works {
@@ -578,8 +628,8 @@ a {
         gap: 2.5rem;
     }
 
-    .catalog-grid.catalog-grid-alt {
-        grid-template-columns: repeat(3, 1fr);
+    .catalog-grid.smart-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     }
 
     .nav-list {
@@ -842,6 +892,84 @@ a {
     max-width: 150px;
     z-index: 2;
     pointer-events: none;
+}
+
+/* ==========================================================================
+   FLOATING WHATSAPP BUTTON
+   ========================================================================== */
+.wpp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background-color: #25D366; /* Official WhatsApp Green */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wpp-float::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #25D366;
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+.wpp-float:hover {
+    transform: scale(1.1);
+}
+
+.wpp-float:hover .wpp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+.wpp-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background-color: #ffffff;
+    color: var(--clr-text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wpp-tooltip.show-delay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 .reviews-ticker-container::before {

@@ -5,7 +5,7 @@
 
 const WHATSAPP_CONFIG = {
     phone: '573104613686',
-    message: 'Hola, vengo de la página web. Me gustaría información sobre los libros personalizados.'
+    message: 'Hola, estoy viendo tu página web y tengo una consulta sobre los libros.'
 };
 
 /**
@@ -173,6 +173,24 @@ const initExpandButtonScroll = () => {
     observer.observe(expandBtn);
 };
 
+/**
+ * Initializes the Floating WhatsApp Tooltip
+ */
+const initWppTooltip = () => {
+    const tooltip = document.querySelector('.wpp-tooltip');
+    if (!tooltip) return;
+
+    // Show tooltip after 5 seconds
+    setTimeout(() => {
+        tooltip.classList.add('show-delay');
+        
+        // Hide it again after 6 seconds to act as a gentle nudge
+        setTimeout(() => {
+            tooltip.classList.remove('show-delay');
+        }, 6000);
+    }, 5000);
+};
+
 // Initialize on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppButtons();
@@ -181,5 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initTrustBarScroll();
     initExpandButtonScroll();
+    initWppTooltip();
     console.log('Libros Únicos - Initialized logic.');
 });
