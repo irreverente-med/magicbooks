@@ -191,6 +191,32 @@ const initWppTooltip = () => {
     }, 5000);
 };
 
+/**
+ * Initializes Scroll-Triggered Animation for Guarantee Items
+ */
+const initGuaranteeScroll = () => {
+    const guaranteeItems = document.querySelectorAll('.guarantee-item');
+    if (guaranteeItems.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-active');
+            }
+        });
+    }, observerOptions);
+
+    guaranteeItems.forEach(item => {
+        observer.observe(item);
+    });
+};
+
 // Initialize on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppButtons();
@@ -200,5 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTrustBarScroll();
     initExpandButtonScroll();
     initWppTooltip();
+    initGuaranteeScroll();
     console.log('Libros Únicos - Initialized logic.');
 });
